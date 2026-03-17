@@ -132,6 +132,7 @@ class Event(models.Model):
     def update_status(self):
         now = timezone.now()
         today = now.date()
+        print(f"Current DateTime: {now}, Event Start: {self.EVENT_DATE_START}, Event End: {self.EVENT_DATE_END}, Registration Deadline: {self.REGISTRATION_DEADLINE}, Status: {self.EVENT_STATUS}")
 
         # Ensure self.EVENT_DATE_START is timezone-aware
         if timezone.is_naive(self.EVENT_DATE_START):
