@@ -130,11 +130,9 @@ TEMPLATES = [
 
 ASGI_APPLICATION = 'cap2.asgi.application'
 
-
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://172.18.123.175:6379",  # Use your WSL IP here
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     }
 }
 
@@ -154,8 +152,8 @@ DATABASES = {
         "NAME": "ligameet-sqlite3",
     }
 }
-dataabse_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(dataabse_url)
+database_url  = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -245,7 +243,7 @@ SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 
 # mobile
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(" ")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
