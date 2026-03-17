@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +76,11 @@
                          
                             <td class="py-3 flex items-center space-x-3 justify-start">
                                 <div class="w-10 h-10 rounded-full overflow-hidden">
-                                    <img src="{{ player.USER_ID.profile.image.url }}" alt="Profile Image" class="w-full h-full object-cover">
+                                    {% if player.USER_ID.profile.image %}
+                                        <img src="{{ player.USER_ID.profile.image.url }}" alt="Profile Image" class="w-full h-full object-cover">
+                                    {% else %}
+                                        <img src="{% static 'images/user_default.png' %}" alt="Default Profile Image" class="w-full h-full object-cover">
+                                    {% endif %}
                                 </div>
                                 <div>
                                     <span>{{ player.USER_ID.profile.FIRST_NAME }} {{ player.USER_ID.profile.LAST_NAME }}</span>
@@ -181,7 +186,11 @@
                                     </div>
                                 </div>
                                 <div class="w-10 h-10 rounded-full overflow-hidden">
-                                    <img src="{{ player.USER_ID.profile.image.url }}" alt="Profile Image" class="w-full h-full object-cover">
+                                    {% if player.USER_ID.profile.image %}
+                                        <img src="{{ player.USER_ID.profile.image.url }}" alt="Profile Image" class="w-full h-full object-cover">
+                                    {% else %}
+                                        <img src="{% static 'images/user_default.png' %}" alt="Default Profile Image" class="w-full h-full object-cover">
+                                    {% endif %}
                                 </div>
                             </td>
                             
